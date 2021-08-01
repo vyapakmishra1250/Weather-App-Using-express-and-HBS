@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{>headerlinks}}
+   <link rel="stylesheet" href="css/weather.css">
+</head>
+<body>
+    {{>navbar}}
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                  <div class="main_content">
+                      <form class="temp_form">
+                          <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                          <input type="submit" value="Search" id="subbtn"">
+                      </form>
+                  </div>
+                  <div class="tempInfo">
+                      <div class="top_layer">
+                          <p id="day">Tuesday</p>
+                          <p id="today_date">13 oct</p>
+                      </div>
+                      <div class="main_layer ">
+                          <p id="city_name">Get output</p>
+                          <div class="middle_layer data_hide">
+                              <p id="temp"><span id="temp_real_val">0</span><sup>0</sup>C</p>
+                              <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{{>footer}}
+<script src="/js/main.js"></script>
+<script>
+    
+
+    const getCurrentDay = () =>{
+        let weekday =  new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] =  "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Satarday";
+
+        let today = new Date();
+        let days = weekday[today.getDay()];
+        let day = document.getElementById('day');
+        day.innerText = days;
+        
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+        let tdate = document.getElementById("today_date");
+        tdate.innerText = date;
+    }
+
+    getCurrentDay();
+    
+</script>
+</body>
+</html>
